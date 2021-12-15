@@ -1,0 +1,47 @@
+footer {
+  background: #333;
+  background: url("/assets/images/bg-area-de-atuacao.jpg");
+  width: 100%;
+  height: 100%;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .form-footer {
+    form {
+      input,
+      textarea {
+        background: transparent;
+        border-color: $primary;
+        color: white;
+        font-size: 14px;
+        letter-spacing: 2px;
+
+        &:hover {
+          background: transparent;
+        }
+      }
+
+      button {
+        
+        &:hover {
+          color: #fff;
+        }
+      }
+
+      ::-webkit-input-placeholder {
+        /* Edge */
+        color: white;
+      }
+
+      :-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: white;
+      }
+
+      ::placeholder {
+        color: white;
+      }
+    }
+  }
+}

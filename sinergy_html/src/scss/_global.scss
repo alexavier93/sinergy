@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap");
+
+body {
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+p {
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.banner-page {
+    height: 250px;
+}
+
+.heading {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-size: 40px;
+    line-height: 1.25;
+    color: $primary;
+    font-weight: 300;
+
+    span {
+        font-weight: 400;
+    }
+}
+
+main {
+    margin-top: 106px;
+}
+
+//Swiper
+
+.swiper {
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #333;
+    }
+
+    .swiper-pagination {
+        .swiper-pagination-bullet {
+            height: 12px;
+            width: 12px;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: $primary;
+        }
+    }
+}
+
+
+// Nav Pills
+.nav-pills .nav-link {
+    color: #000;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    color: $primary;
+    background-color: transparent;
+    border-radius: 0;
+    border-bottom: 3px solid $primary;
+}
