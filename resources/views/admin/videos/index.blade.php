@@ -6,16 +6,16 @@
     <div class="page-header-content py-3">
 
         <div class="d-sm-flex align-items-center justify-content-between">
-            <h1 class="h3 mb-0 text-gray-800">Parceiros</h1>
-            <a href="{{ route('admin.parceiros.create') }}"
+            <h1 class="h3 mb-0 text-gray-800">Vídeos</h1>
+            <a href="{{ route('admin.videos.create') }}"
                 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-plus text-white-50"></i> Novo Parceiro
+                <i class="fas fa-plus text-white-50"></i> Novo Vídeo
             </a>
         </div>
 
         <ol class="breadcrumb mb-0 mt-4">
             <li class="breadcrumb-item"><a href="#">Painel Admin</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Parceiros</li>
+            <li class="breadcrumb-item active" aria-current="page">Vídeos</li>
         </ol>
 
     </div>
@@ -32,22 +32,21 @@
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
-                    <span class="m-0 font-weight-bold text-primary">Parceiros</span>
+                    <span class="m-0 font-weight-bold text-primary">Vídeos</span>
 
-                    <a href="{{ route('admin.parceiros.create') }}"
-                        class="btn btn-sm btn-primary float-right d-block d-sm-none">Novo Parceiro</a>
+                    <a href="{{ route('admin.videos.create') }}"
+                        class="btn btn-sm btn-primary float-right d-block d-sm-none">Novo Vídeo</a>
                 </div>
 
                 <div class="card-body">
 
-                    <div class="table-parceiros">
+                    <div class="table-videos">
 
                         <table id="dataTables"  class="table table-bordered">
 
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Imagem</th>
                                     <th scope="col">Título</th>
                                     <th scope="col">Ações</th>
                                 </tr>
@@ -55,15 +54,14 @@
 
                             <tbody>
 
-                                @foreach ($parceiros as $parceiro)
+                                @foreach ($videos as $video)
 
                                     <tr>
-                                        <td>{{ $parceiro->id }}</th>
-                                        <td class="w-25"><img class="img-fluid w-50" src="{{ asset('storage/' . $parceiro->imagem) }}" alt=""></td></td>
-                                        <td>{{ $parceiro->nome }}</th>
+                                        <td>{{ $video->id }}</th>
+                                        <td>{{ $video->titulo }}</th>
                                         <td width="15%">
-                                            <a href="{{ route('admin.parceiros.edit', ['parceiro' => $parceiro->id]) }}" class="btn btn-sm btn-primary">Editar</a>
-                                            <a href="javascript:;" data-toggle="modal" data-id='{{ $parceiro->id }}' data-target="#modalDelete" class="btn btn-sm btn-danger delete">Excluir</a>
+                                            <a href="{{ route('admin.videos.edit', ['video' => $video->id]) }}" class="btn btn-sm btn-primary">Editar</a>
+                                            <a href="javascript:;" data-toggle="modal" data-id='{{ $video->id }}' data-target="#modalDelete" class="btn btn-sm btn-danger delete">Excluir</a>
                                         </td>
                                     </tr>
 
@@ -93,7 +91,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Fechar</button>
-                    <form action="{{ route('admin.parceiros.delete') }}" method="post" class="float-right">
+                    <form action="{{ route('admin.videos.delete') }}" method="post" class="float-right">
                         @csrf
                         <input type="hidden" id="id" name="id">
                         <button type="submit" class="btn btn-danger btn-sm">Excluir</button>

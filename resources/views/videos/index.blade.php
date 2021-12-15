@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Sinergy - Parceiros')
+@section('title', 'Sinergy - Vídeos')
 
 @section('content')
 
@@ -9,7 +9,7 @@
         <div class="banner-page d-flex justify-content-center align-items-center mb-5"  style="background-image: url({{ asset('assets/images/banners/banner-1.jpg') }} );">
             <div class="container">
                 <div class="content d-flex justify-content-center">
-                    <h1 class="text-uppercase text-white">Parceiros</h1>
+                    <h1 class="text-uppercase text-white">Vídeos</h1>
                 </div>
             </div>
         </div>
@@ -19,10 +19,14 @@
 
             <div class="row">
 
-                @foreach ($parceiros as $parceiro)
+                @foreach ($videos as $video)
 
                 <div class="col-lg-3 text-center mb-4">
-                    <img class="w-100" src="{{ asset('storage/'. $parceiro->imagem) }}" alt="{{ $parceiro->nome }}" title="{{ $parceiro->nome }}">
+                    <a data-fancybox href="https://www.youtube.com/watch?v={{ $video->codigo }}">
+                        <img class="w-100" src="https://img.youtube.com/vi/{{ $video->codigo }}/maxresdefault.jpg" alt="{{ $video->titulo }}" title="{{ $video->titulo }}">
+                    </a>
+                    <h5 class="mt-2">{{ $video->titulo }}</h5>
+                    <p>{{ $video->descricao }}</p>
                 </div>
 
                 @endforeach

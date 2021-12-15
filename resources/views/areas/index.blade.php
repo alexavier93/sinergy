@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Conquest Broker - Sobre Nós')
+@section('title', 'Sinergy - Áreas de Atuação')
 
 @section('content')
 
@@ -22,8 +22,8 @@
 
                 <nav class="nav flex-column mb-5">
 
-                    @foreach ($areas as $area)
-                        <a class="nav-link {{ $loop->first ? 'active' : '' }}" aria-current="page" href="{{ route('areas.area', ['slug' => $area->slug]) }}">{{ $area->titulo  }}</a>
+                    @foreach ($areas as $item)
+                        <a class="nav-link {{ ($item->id == $area->id ? 'active' : '') }}" aria-current="page" href="{{ route('areas.area', ['slug' => $item->slug]) }}">{{ $item->titulo  }}</a>
                     @endforeach
                     
                   </nav>
@@ -31,8 +31,11 @@
 
             <div class="col-lg-9">
 
-                <h3 class="text-secondary mb-4">Embalagens</h3>
+                <h3 class="text-secondary mb-4">{{ $area->titulo }}</h3>
 
+                <div>
+                    {!! $area->texto !!}
+                </div>
                 
             </div>
         </div>

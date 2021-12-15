@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Conquest Broker')
+@section('title', 'Sinergy')
 
 @section('content')
 
@@ -109,45 +109,15 @@
 
                 <div class="areas row justify-content-center">
 
-                    <div class="col-12 col-md-4 position-relative mb-4"> 
+                    @foreach ($areas as $area)
+                    <a href="{{ route('areas.area', ['slug' => $area->slug]) }}" class="col-12 col-md-4 position-relative mb-4"> 
                         <div class="position-relative">
-                            <img class="w-100" src="{{ asset('assets/images/areas/1.jpg') }}" alt="">
+                            <img class="w-100" src="{{ asset('storage/'. $area->imagem) }}" alt="">
                             <div class="overlay"></div>
-                            <h4 class="text-white text-center">Embalagens</h4>
+                            <h4 class="text-white text-center">{{ $area->titulo }}</h4>
                         </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 position-relative mb-4">
-                        <div class="position-relative">
-                            <img class="w-100" src="{{ asset('assets/images/areas/5.jpg') }}" alt="">
-                            <div class="overlay"></div>
-                            <h4 class="text-white text-center">Construção Civil</h4>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 position-relative mb-4">
-                        <div class="position-relative">
-                            <img class="w-100" src="{{ asset('assets/images/areas/6.jpg') }}" alt="">
-                            <div class="overlay"></div>
-                            <h4 class="text-white text-center">Energia</h4>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 position-relative mb-4">
-                        <div class="position-relative">
-                            <img class="w-100" src="{{ asset('assets/images/areas/2.jpg') }} " alt="">
-                            <div class="overlay"></div>
-                            <h4 class="text-white text-center">Vergalhão de Alumínio</h4>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 position-relative mb-4">
-                        <div class="position-relative">
-                            <img class="w-100" src="{{ asset('assets/images/areas/3.jpg') }} " alt="">
-                            <div class="overlay"></div>
-                            <h4 class="text-white text-center">Tarugos de Alumínio</h4>
-                        </div>
-                    </div>
+                    </a>
+                    @endforeach
 
                 </div>
 
@@ -227,7 +197,7 @@
 
                     <div class="bg-video d-flex justify-content-center align-items-center">
 
-                        <a href="#" class="play-video">
+                        <a data-fancybox href="https://www.youtube.com/watch?v=0G383538qzQ" class="play-video">
                             <i class="fas fa-play"></i>
                         </a>
                         
@@ -250,30 +220,21 @@
 
                             <div class="last-videos mt-4">
 
-                                <a href="" class="d-flex justify-content-xl-between align-items-center mb-3">
+                                @foreach ($videos as $video)
+                                <a data-fancybox href="https://www.youtube.com/watch?v={{ $video->codigo }}" class="d-flex justify-content-xl-between align-items-center mb-3">
 
-                                    <img src="{{ asset('assets/images/areas/2.jpg') }}" width="150" alt="">
+                                    <img src="https://img.youtube.com/vi/{{ $video->codigo }}/maxresdefault.jpg" width="150" alt="">
 
                                     <div class="info-video ms-3">
-                                        <h5 class="text-uppercase text-white">Lorem Ipsum</h5>
-                                        <p class="text-white">Nullam facilisis mauris dolor, eget mattis tortor imperdiet posuere. Curabitur venenatis magna non odio convallis, </p>
+                                        <h5 class="text-uppercase text-white">{{ $video->titulo }}</h5>
+                                        <p class="text-white">{{ $video->descricao }}</p>
                                     </div>
 
                                 </a>
-
-                                <a href="" class="d-flex justify-content-lg-between align-items-center mb-3">
-
-                                    <img src="{{ asset('assets/images/areas/2.jpg') }}" width="150" alt="">
-
-                                    <div class="info-video ms-3">
-                                        <h5 class="text-uppercase text-white">Lorem Ipsum</h5>
-                                        <p class="text-white">Nullam facilisis mauris dolor, eget mattis tortor imperdiet posuere. Curabitur venenatis magna non odio convallis, </p>
-                                    </div>
-
-                                </a>
+                                @endforeach
                                 
                                 <div class="text-end">
-                                    <a href="" class="text-white">Ver todos <i class="fas fa-long-arrow-alt-right"></i></a>
+                                    <a href="{{ route('videos.index') }}" class="text-white">Ver todos <i class="fas fa-long-arrow-alt-right"></i></a>
                                 </div>
                                 
                             </div>
@@ -303,11 +264,9 @@
 
                     <div class="swiper swiperCarouselHome">
                         <div class="swiper-wrapper mb-5">
-                            <div class="swiper-slide text-center"><img src="{{ asset('assets/images/parceiros/1.jpg') }}" alt=""></div>
-                            <div class="swiper-slide text-center"><img src="{{ asset('assets/images/parceiros/2.jpg') }}" alt=""></div>
-                            <div class="swiper-slide text-center"><img src="{{ asset('assets/images/parceiros/3.jpg') }}" alt=""></div>
-                            <div class="swiper-slide text-center"><img src="{{ asset('assets/images/parceiros/4.jpg') }}" alt=""></div>
-                            <div class="swiper-slide text-center"><img src="{{ asset('assets/images/parceiros/5.jpg') }}" alt=""></div>
+                            @foreach ($parceiros as $parceiro)
+                            <div class="swiper-slide text-center"><img class="w-100" src="{{ asset('storage/'. $parceiro->imagem) }}" alt=""></div>
+                            @endforeach
                         </div>
                         <div class="swiper-pagination"></div>
                       </div>

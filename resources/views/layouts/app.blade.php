@@ -10,7 +10,7 @@
 
     <link rel="icon" href="{{ asset('/assets/images/favicon.ico') }} ">
 
-    <title>Sinergy</title>
+    <title>@yield('title')</title>
     
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
 

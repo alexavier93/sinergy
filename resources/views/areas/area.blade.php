@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Conquest Broker - Sobre Nós')
+@section('title', 'Sinergy - ' $area->titulo )
 
 @section('content')
 

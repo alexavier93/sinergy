@@ -10,9 +10,11 @@ class AreasDeAtuacaoController extends Controller
     public function index()
     {
 
-        $areas = AreaAtuacao::all();
+        $areas = AreaAtuacao::orderBy('id', 'desc')->get();
+
+        $area = AreaAtuacao::first();
         
-        return view('areas.index', compact('areas'));
+        return view('areas.index', compact('areas', 'area'));
         
     }
 

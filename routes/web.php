@@ -2,12 +2,11 @@
 
 use App\Http\Controllers\Admin\AreasDeAtuacaoController;
 use App\Http\Controllers\Admin\BannerController;
-use App\Http\Controllers\Admin\CategoriaController;
 use App\Http\Controllers\Admin\GaleriaController;
 use App\Http\Controllers\Admin\MessageController;
-use App\Http\Controllers\Admin\ImovelController;
 use App\Http\Controllers\Admin\ParceirosController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\VideoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
             'areas' => AreasDeAtuacaoController::class,
             'galerias' => GaleriaController::class,
             'parceiros' => ParceirosController::class,
+            'videos' => VideoController::class,
         ]);
 
         // IMOVEIS
@@ -64,6 +64,11 @@ Route::group(['middleware' => 'auth'], function () {
         // PARCEIROS
         Route::prefix('parceiros')->name('parceiros.')->group(function(){
             Route::post('/delete', [AreasDeAtuacaoController::class, 'delete'])->name('delete');
+        });
+
+        // VIDEOS
+        Route::prefix('videos')->name('videos.')->group(function(){
+            Route::post('/delete', [VideoController::class, 'delete'])->name('delete');
         });
         
         // BANNERS
@@ -101,6 +106,10 @@ Route::prefix('galeria')->name('galeria.')->group(function(){
 
 Route::prefix('parceiros')->name('parceiros.')->group(function(){
     Route::get('/', [App\Http\Controllers\ParceirosController::class, 'index'])->name('index');
+});
+
+Route::prefix('videos')->name('videos.')->group(function(){
+    Route::get('/', [App\Http\Controllers\VideoController::class, 'index'])->name('index');
 });
 
 Route::prefix('contato')->name('contato.')->group(function(){
